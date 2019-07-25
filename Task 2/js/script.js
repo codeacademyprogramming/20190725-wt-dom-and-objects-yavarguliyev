@@ -62,6 +62,8 @@ divRow2.appendChild(divReviews);
 divReviews.appendChild(peopleThoughts);
 
 
+/* Row 3 */
+
 /* Paragraph 1 */
 
 let divRow3 = document.createElement("div");
@@ -117,7 +119,7 @@ divCol2.appendChild(image2);
 divCol2.appendChild(name2);
 
 
-/* Row 3 Paragraph 3 */
+/* Paragraph 3 */
 
 let divCol3 = document.createElement("div");
     divCol3.classList = ("col-4");
@@ -140,16 +142,8 @@ divCol3.appendChild(paragraph3);
 divCol3.appendChild(image3);
 divCol3.appendChild(name3);
 
-
-
-  
-
-
-
-
 /* Footer */
 
 let footer = document.createElement("footer");
 
     body.appendChild(footer);
-
