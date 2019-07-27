@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 1</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="scss/main.css">
+
+</head>
+
+<body>
+
+    <header></header>
+    <main>
+
+        <!-- Section students' score list  -->
+
+        <section>
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-6 my-5">
+                        <form id="student-form" onsubmit="event.preventDefault()">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control list" id="name" placeholder="Enter name">
+                            </div>
+                            <div class="form-group">
+                                <label for="surname">Surname</label>
+                                <input type="text" class="form-control list" id="surname" placeholder="Enter surname">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control list" id="email" placeholder="Enter email">
+                            </div>
+                            <div class="form-group">
+                                <label for="birthday">Birthday</label>
+                                <input type="text" class="form-control list" id="birthday" placeholder="Enter birthday">
+                            </div>
+                            <button type="submit" class="btn btn-primary" onclick="addStudent()">Save</button>
+                        </form>
+                    </div>
+                    <div class="col-6 border border-info">
+                        <form class="student-score my-4 d-flex" onsubmit="event.preventDefault()">
+                            <div class="col-6 form-group">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control score" id="student-email"
+                                    placeholder="Enter student email">
+                            </div>
+                            <div class="col-6 form-group">
+                                <label for="name">Score</label>
+                                <input type="text" class="form-control score" id="student-score"
+                                    placeholder="Enter student score">
+                            </div>
+                        </form>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary float-right"
+                                        onclick="addScore()">AddScore</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container my-5">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h2 class="display-5 d-flex justify-content-center">Scores of the student</h2>
+                                    <table class="table table-bordered table-dark">
+                                        <thead>
+                                            <tr>
+                                                <th scope="">#</th>
+                                                <th scope="">Email</th>
+                                                <th scope="">Scores</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="scores">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section students' list -->
+
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="display-5">Student List</h2>
+                        <table class="table table-bordered table-dark">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Surname</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Birthday</th>
+                                </tr>
+                            </thead>
+                            <tbody id="students">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer></footer>
+
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
