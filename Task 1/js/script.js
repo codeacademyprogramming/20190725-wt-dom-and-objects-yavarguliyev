@@ -106,18 +106,21 @@ function reset() {
 function addScore() {
     let val = document.getElementById('student-email').value;
     let index = 0;
-    for(let i = 0; i<students.length; i++){
+    for(let i = 0; i < students.length; i++){
         if(students[i].Email.toLowerCase() == val.toLowerCase()){
             students[i].AddScore(Number(inputsScore.value));
             index = i;
+
             let tr = document.createElement('tr');
             let th = document.createElement('th');
+            
             th.setAttribute('scope','col');
             let th2 = document.createElement('th');
             th2.setAttribute('scope','col');
+            
             let th3 = document.createElement('th');
             th3.setAttribute('scope','col');
-            
+        
             th2.innerHTML = students[i].Email;
             th3.innerHTML = students[i].Score;
             th.innerHTML = ++i;
