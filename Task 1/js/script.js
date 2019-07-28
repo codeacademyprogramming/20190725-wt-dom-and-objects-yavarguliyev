@@ -131,28 +131,3 @@ function addScore() {
         }
     }
 }
-
-/* Average Score of the students */
-
-// function averageScore() {
-//     let trElem = document.createElement("tr");
-//     document.getElementsByClassName("students")[1].appendChild(trElem);
-//     trElem.setAttribute("data-index", (students.length - 1));
-//     trElem.style.cursor = "pointer";
-//     trElem.innerHTML = `<tr>
-//     <th scope = "row">${i+1}</th>
-//     <td onclick="average(this)" id="${id+1}">${students[i].Name}</td>
-//     <td>${students[i].Surname}</td>
-//     <td>${students[i].Email}</td>
-//     <td>${students[i].Birthday}</td>
-//     </tr>`;
-//     trElem.addEventListener("dbclick", function() {
-//         let studentIndex = this.getAttribute("data-index");
-//         alert(students[studentIndex].getAverageScore());
-//     });
-
-//     inputsList[0].value = ""; 
-//     inputsList[1].value = ""; 
-//     inputsList[2].value = ""; 
-//     inputsList[3].value = "";
-// }
