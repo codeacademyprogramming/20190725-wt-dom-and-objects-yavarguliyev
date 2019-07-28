@@ -44,17 +44,10 @@ function Student(name, surname, email, birthday) {
 /* Add students' list */
 
 function addStudent() {
-    let IsEmailValid = inputsList[2].value;
-    let reEmail = /\S+@\S+\.\S+/g;
-    console.log(reEmail.test(IsEmailValid));
+    
 
-    let IsBirthdayValid = inputsList[3].value;
-    let reBirthday = /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/i;
-    console.log(reBirthday.test(IsBirthdayValid));
     if(inputsList[0].value != "" && inputsList[1].value != "" && inputsList[2].value != "" && inputsList[3].value != "") {
-        let s = new Student(inputsList[0].value, inputsList[1].value, inputsList[2].value, inputsList[3].value);
-        students.push(s);
-        showStudents()
+        inputsValidation();
         reset();
         // averageScore()
     } else {
@@ -62,10 +55,27 @@ function addStudent() {
     }
 }
 
-// function isEmailValid() {
+/* Email and Birthday validation */
 
+function inputsValidation() {
+    let IsEmailValid = inputsList[2].value;
+    let reEmail = /\S+@\S+\.\S+/g;
 
-// }
+    let IsBirthdayValid = inputsList[3].value;
+    let reBirthday = /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/i;
+
+    if(reEmail.test(IsEmailValid) && reBirthday.test(IsBirthdayValid)){
+        let s = new Student(inputsList[0].value, inputsList[1].value, inputsList[2].value, inputsList[3].value);
+        students.push(s);
+        showStudents()
+        return  console.log(true);
+      }
+      else {
+          return alert("add the following symbols to the email (/\S+@\S+\.\S+/) && add the following symbols to the birthday (/^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/)");
+      }
+}
+
+/* Students' show list at the table */
 
 function showStudents() {
     let rows = "";
@@ -82,30 +92,6 @@ function showStudents() {
     
     document.getElementById("students").innerHTML = rows;
 }
-
-function averageScore() {
-    let trElem = document.createElement("tr");
-    document.getElementsByClassName("students")[1].appendChild(trElem);
-    trElem.setAttribute("data-index", (students.length - 1));
-    trElem.style.cursor = "pointer";
-    trElem.innerHTML = `<tr>
-    <th scope = "row">${i+1}</th>
-    <td id="${i+1}">${students[i].Name}</td>
-    <td>${students[i].Surname}</td>
-    <td>${students[i].Email}</td>
-    <td>${students[i].Birthday}</td>
-    </tr>`;
-    trElem.addEventListener("dbclick", function() {
-        let studentIndex = this.getAttribute("data-index");
-        alert(students[studentIndex].getAverageScore());
-    });
-
-    inputsList[0].value = ""; 
-    inputsList[1].value = ""; 
-    inputsList[2].value = ""; 
-    inputsList[3].value = "";
-}
-
 
 /* Reset function */
 
@@ -142,3 +128,28 @@ function addScore() {
         }
     }
 }
+
+/* Average Score of the students */
+
+// function averageScore() {
+//     let trElem = document.createElement("tr");
+//     document.getElementsByClassName("students")[1].appendChild(trElem);
+//     trElem.setAttribute("data-index", (students.length - 1));
+//     trElem.style.cursor = "pointer";
+//     trElem.innerHTML = `<tr>
+//     <th scope = "row">${i+1}</th>
+//     <td onclick="average(this)" id="${id+1}">${students[i].Name}</td>
+//     <td>${students[i].Surname}</td>
+//     <td>${students[i].Email}</td>
+//     <td>${students[i].Birthday}</td>
+//     </tr>`;
+//     trElem.addEventListener("dbclick", function() {
+//         let studentIndex = this.getAttribute("data-index");
+//         alert(students[studentIndex].getAverageScore());
+//     });
+
+//     inputsList[0].value = ""; 
+//     inputsList[1].value = ""; 
+//     inputsList[2].value = ""; 
+//     inputsList[3].value = "";
+// }
