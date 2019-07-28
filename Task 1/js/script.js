@@ -10,6 +10,8 @@ let inputScore = document.getElementsByClassName("form-score");
 let scoreList = document.querySelector("#scores");
 let inputsEmail = document.querySelector("#student-email");
 let inputsScore = document.querySelector("#student-score");
+let studentList = document.getElementById("students");
+
 
 /* Constructor objects */
 
@@ -42,19 +44,28 @@ function Student(name, surname, email, birthday) {
 /* Add students' list */
 
 function addStudent() {
-    // let IsEmailValid=inputs[2].value;
-    // let re = /\S+@\S+\.\S+/;
-    // alert ("");
-    // console.log(re.test(IsEmailValid.toLowerCase));
+    let IsEmailValid = inputsList[2].value;
+    let reEmail = /\S+@\S+\.\S+/g;
+    console.log(reEmail.test(IsEmailValid));
+
+    let IsBirthdayValid = inputsList[3].value;
+    let reBirthday = /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/i;
+    console.log(reBirthday.test(IsBirthdayValid));
     if(inputsList[0].value != "" && inputsList[1].value != "" && inputsList[2].value != "" && inputsList[3].value != "") {
         let s = new Student(inputsList[0].value, inputsList[1].value, inputsList[2].value, inputsList[3].value);
         students.push(s);
         showStudents()
-        // reset();
+        reset();
+        // averageScore()
     } else {
         alert("you cannot leave the inputs empty");
     }
 }
+
+// function isEmailValid() {
+
+
+// }
 
 function showStudents() {
     let rows = "";
@@ -62,7 +73,7 @@ function showStudents() {
     for(let i = 0; i < students.length; i++) {
         rows += `<tr>
             <th scope = "row">${i+1}</th>
-            <td>${students[i].Name}</td>
+            <td id="${i+1}">${students[i].Name}</td>
             <td>${students[i].Surname}</td>
             <td>${students[i].Email}</td>
             <td>${students[i].Birthday}</td>
@@ -72,11 +83,35 @@ function showStudents() {
     document.getElementById("students").innerHTML = rows;
 }
 
+function averageScore() {
+    let trElem = document.createElement("tr");
+    document.getElementsByClassName("students")[1].appendChild(trElem);
+    trElem.setAttribute("data-index", (students.length - 1));
+    trElem.style.cursor = "pointer";
+    trElem.innerHTML = `<tr>
+    <th scope = "row">${i+1}</th>
+    <td id="${i+1}">${students[i].Name}</td>
+    <td>${students[i].Surname}</td>
+    <td>${students[i].Email}</td>
+    <td>${students[i].Birthday}</td>
+    </tr>`;
+    trElem.addEventListener("dbclick", function() {
+        let studentIndex = this.getAttribute("data-index");
+        alert(students[studentIndex].getAverageScore());
+    });
+
+    inputsList[0].value = ""; 
+    inputsList[1].value = ""; 
+    inputsList[2].value = ""; 
+    inputsList[3].value = "";
+}
+
+
 /* Reset function */
 
 function reset() {
-    for(let i = 0; i < inputs.length; i++) {
-        inputs[i].value = "";
+    for(let i = 0; i < inputsList.length; i++) {
+        inputsList[i].value = "";
     }
 }
 
